@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>J. — Sovereign Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header id="header">
+            <div class="header-left">
+                <span class="logo">J<span class="logo-dot">.</span></span>
+                <span class="header-status" id="status-text">ready</span>
+            </div>
+            <div class="header-right">
+                <button id="btn-clear" class="header-btn" title="New session">⟳</button>
+                <button id="btn-settings" class="header-btn" title="Settings">⚙</button>
+            </div>
+        </header>
+
+        <!-- Main output area -->
+        <main id="output" role="log" aria-live="polite">
+            <div class="welcome-msg">
+                <span class="welcome-logo">J<span class="logo-dot">.</span></span>
+                <p>Sovereign Autonomous Coding Agent</p>
+                <p class="welcome-sub">Type a message to chat, or prefix with <code>!</code> to run a shell command directly.</p>
+            </div>
+        </main>
+
+        <!-- Input area -->
+        <footer id="input-area">
+            <div class="input-wrapper">
+                <textarea id="input" rows="1" placeholder="Ask J. something, or !command for shell..." autofocus></textarea>
+                <button id="btn-send" title="Send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Settings modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Settings</h3>
+            <label>
+                Model
+                <input type="text" id="setting-model" value="brain" />
+            </label>
+            <label>
+                Ollama URL
+                <input type="text" id="setting-url" value="http://localhost:11434" />
+            </label>
+            <div class="modal-actions">
+                <button id="settings-save" class="btn-primary">Save</button>
+                <button id="settings-close" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
